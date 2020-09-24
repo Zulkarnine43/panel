@@ -1,0 +1,94 @@
+ <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+<style type="text/css">
+.content{
+  height: 400px;
+  width:100%;
+  position: relative;
+}
+.content .images{
+  height: 100%;
+  width: 100%;
+}
+.content .images img{
+  height: 100%;
+  width: 100%;
+}
+.btm-slides{
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+}
+.btm-slides span{
+  height: 15px;
+  width: 50px;
+  border: 2px solid white;
+  margin: 0 3px;
+  cursor: pointer;
+}
+.sliders{
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 45px;
+  cursor: pointer;
+  border: 2px solid white;
+  background: rgba(255,255,255,0.1);
+}
+.sliders:hover{
+  background: rgba(255,255,255,0.2);
+}
+.right{
+  right: 0;
+}
+.sliders span{
+  line-height: 41px;
+  font-size: 35px;
+  color: white;
+}
+</style>
+
+
+ <div class="content">
+      <div class="images">
+        <img src="{{url('public/asset/img/banner.jpg')}}">
+        <img src="{{url('public/asset/img/images.jpg')}}">
+        <img src="{{url('public/asset/img/home.png')}}">
+        <img src="{{url('public/asset/img/banner.jpg')}}">
+      </div>
+<div class="btm-slides">
+        <span onclick="btm_slide(1)"></span>
+        <span onclick="btm_slide(2)"></span>
+        <span onclick="btm_slide(3)"></span>
+        <span onclick="btm_slide(4)"></span>
+      </div>
+<div class="sliders left" onclick="side_slide(-1)">
+        <span class="fas fa-angle-left"></span>
+      </div>
+<div class="sliders right" onclick="side_slide(1)">
+        <span class="fas fa-angle-right"></span>
+      </div>
+</div>
+<script>
+      var indexValue = 1;
+      showImg(indexValue);
+      function btm_slide(e){showImg(indexValue = e);}
+      function side_slide(e){showImg(indexValue += e);}
+      function showImg(e){
+        var i;
+        const img = document.querySelectorAll('img');
+        const slider = document.querySelectorAll('.btm-slides span');
+        if(e > img.length){indexValue = 1}
+        if(e < 1){indexValue = img.length}
+        for(i = 0; i < img.length; i++){
+          img[i].style.display = "none";
+        }
+        for(i = 0; i < slider.length; i++){
+          slider[i].style.background = "rgba(255,255,255,0.1)";
+        }
+        img[indexValue-1].style.display = "block";
+        slider[indexValue-1].style.background = "white";
+      }
+    </script>
+
