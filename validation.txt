@@ -1,0 +1,10 @@
+      $this->validate($request,[
+            'f_name'=>'min:1|max:255',
+            'email'=>'email|unique:farmer_login_saves,email',
+            'phone'=>'numeric|digits:11',
+            'district' => 'required',
+            'zip_code'=>'required|max:5|string',
+            'gander'=> 'required|in:male,female',
+            'password'=>'Max:10|Min:5',
+            'confirm_password'=>'Max:10|Min:5'
+        ]);
